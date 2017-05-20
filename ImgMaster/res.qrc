@@ -1,0 +1,8 @@
+<RCC>
+    <qresource lang="cn" prefix="/images">
+        <file alias="file-open">res/file-open.png</file>
+        <file alias="file-save">res/file-save.png</file>
+        <file alias="set-color">res/set-color.png</file>
+        <file alias="proc-inverse">res/proc-inverse.png</file>
+    </qresource>
+</RCC>
