@@ -332,7 +332,7 @@ debug/moc_mainwindow.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore/QVariant \
 		colordetector.h \
 		basicpanel.h \
 		mainwindow.h
-	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IE:/work/projects/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -ID:/work/projects/github/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_basicpanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qwidget.h \
@@ -449,7 +449,7 @@ debug/moc_basicpanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qboxlayout.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QVBoxLayout \
 		basicpanel.h
-	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IE:/work/projects/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore basicpanel.h -o debug\moc_basicpanel.cpp
+	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -ID:/work/projects/github/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore basicpanel.h -o debug\moc_basicpanel.cpp
 
 debug/moc_colorreducepanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qwidget.h \
@@ -565,7 +565,7 @@ debug/moc_colorreducepanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/Q
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qgridlayout.h \
 		colorreducepanel.h
-	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IE:/work/projects/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore colorreducepanel.h -o debug\moc_colorreducepanel.cpp
+	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -ID:/work/projects/github/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore colorreducepanel.h -o debug\moc_colorreducepanel.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
