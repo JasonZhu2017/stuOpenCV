@@ -1,0 +1,12 @@
+<RCC>
+    <qresource lang="cn" prefix="/icon">
+        <file alias="file_open">res/file_open.png</file>
+        <file alias="file_new">res/file_new.png</file>
+        <file alias="file_save">res/file_save.png</file>
+        <file alias="panel_1st">res/controller_white.png</file>
+        <file alias="panel_2nd">res/controller_blue.png</file>
+        <file alias="panel_3rd">res/controller_green.png</file>
+        <file alias="panel_4th">res/controller_red.png</file>
+        <file alias="view_switch">res/view_change.png</file>
+    </qresource>
+</RCC>

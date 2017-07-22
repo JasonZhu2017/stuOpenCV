@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\imageview.o
+./release\colordetector.o
+./release\corecontroller.o
+./release\basicpanel.o
+./release\colorreduce.o
+./release\colorreducepanel.o
+./release\qrc_res.o
+./release\moc_mainwindow.o
+./release\moc_basicpanel.o
+./release\moc_colorreducepanel.o
+);
