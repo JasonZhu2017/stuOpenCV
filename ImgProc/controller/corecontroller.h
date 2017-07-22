@@ -1,35 +1,41 @@
 #ifndef CORECONTROLLER_H
 #define CORECONTROLLER_H
+#include <QDebug>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-#include <iostream>
-#include <QDebug>
-#include <colordetector.h>
+#include <model/colordetector.h>
 
 class CoreController
 {
 private:
-    CoreController();
+    CoreController(int bufferSize=10);
     ~CoreController();
     static CoreController * pSingleton;
     //data store
-    cv::Mat image;
-    cv::Mat imgBak;
+    int curIndex;
+    int prevValidNum;
+    int nextValidNum;
+    int bufferSize;
+    cv::Mat ** imgsArray;
+    cv::Mat imgSrc;
     cv::Mat imgGray;
-    cv::Mat result;
-    cv::Mat hist;
+    cv::Mat imgChRed;
+    cv::Mat imgChGreen;
+    cv::Mat imgChBlue;
+    cv::Mat imgHist;
     //data store
-
 
 public:
     static CoreController * getInstance();
     static void destroy();
 
-    cv::Mat  getImg();
-    cv::Mat  getImgBak();
-    void setBackImg(cv::Mat & imgIn);
-    cv::Mat  getLastResult();
+    void addImg2Array(cv::Mat img);
+    void insertImg2Array(cv::Mat img, int index);
+    cv::Mat getImgSrc();
+    void setImgSrc(cv::Mat & imgIn);
+    cv::Mat getCurImg();
+    cv::Mat getLastResult();
     void recoveryImg();
     bool loadImg(std::string filename);
     void flipImg();

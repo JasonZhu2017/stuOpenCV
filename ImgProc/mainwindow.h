@@ -22,10 +22,12 @@
 #include <QtWidgets/QFileDialog>
 #include <QDebug>
 #include <iostream>
-#include <imageview.h>
-#include <colorreducepanel.h>
-#include <corecontroller.h>
-#include <basicpanel.h>
+#include <view/imageview.h>
+#include <view/colorreducepanel.h>
+#include <view/basicpanel.h>
+#include <view/viewpanelc2r2.h>
+#include <view/viewpanelc3.h>
+#include <controller/corecontroller.h>
 
 
 class MainWindow : public QMainWindow
@@ -37,44 +39,42 @@ public:
     ~MainWindow();
 public:  //for ui
     QWidget * centralWidget;
+    //menu
     QMenuBar * mainMenuBar;
     QMenu * fileMenu;
     QMenu * panelMenu;
+    //toolbar
     QToolBar * mainToolBar;
     QToolBar * panelToolBar;
     QStatusBar *statusBar;
+    //dockwidget
     QDockWidget *dockWidget;
     QWidget *dockWidgetContents;
+    //for process panel
+    QStackedWidget* procPanelsStack;
+    ColorReducePanel* cReducePanel;
+    BasicPanel * basicPanel;
+    QWidget* generalPanel;
+    //for view show pannel
+    QStackedWidget * viewPanelsStack;
+    ViewPanelC2R2 * pViewPanelC2R2;
+    ViewPanelC3 * pViewPanelC3;
+    //layout
     QHBoxLayout * mainLayout;
-    QGridLayout * viewLayout;
-    QStackedWidget* panelsStack;
-    ImageView * imgView1, srcView;
-    ImageView * imgView2, firstResultView;
-    ImageView * imgView3, secondResultView;
-    ImageView * imgView4, histView;
+    //file operate action
     QAction * fileOpenAction;
     QAction * fileSaveAction;
-    //panel switch
+    //panel switch action
     QAction * firstPanelAction;
     QAction * secondPanelAction;
     QAction * thirdPanelAction;
     QAction * fourthPanelAction;
-    //view switch
+    //view switch action
     QAction * viewSwitchAction;
-    int viewLoopCounter;
-
-
-
-    //for operation stack
-    ColorReducePanel* cReducePanel;
-    BasicPanel * basicPanel;
-    QWidget* generalPanel;
-
-    //for operation stack
     //for ui
+
 public:
     void closeEvent(QCloseEvent *event);
-
 
 private:
     void setupUi();
@@ -83,14 +83,13 @@ private:
     void initMenu();
     void initToolBar();
     void initConnect();
-    void setupPanelsStack();
+    void initProcPanelsStack();
+    void initViewPanelsStack();
 
 private slots:
     void slot_fileOpenAct();
     void slot_fileSaveAct();
-    void slot_panelSwitch();
-    void slot_viewSwitch();
-    void set_viewShowStyle(int counter);
+    void slot_procPanelSwitch();
     void showImg();
     void slot_flip();
     void slot_colorReduce();

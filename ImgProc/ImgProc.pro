@@ -14,20 +14,26 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    imageview.cpp \
-    colordetector.cpp \
-    corecontroller.cpp \
-    basicpanel.cpp \
-    colorreduce.cpp \
-    colorreducepanel.cpp
+    view/imageview.cpp \
+    view/colorreducepanel.cpp \
+    view/basicpanel.cpp \
+    controller/corecontroller.cpp \
+    model/colordetector.cpp \
+    model/colorreduce.cpp \
+    view/viewpanel.cpp \
+    view/viewpanelc3.cpp \
+    view/viewpanelc2r2.cpp
 
 HEADERS  += mainwindow.h \
-    imageview.h \
-    colordetector.h \
-    corecontroller.h \
-    basicpanel.h \
-    colorreduce.h \
-    colorreducepanel.h
+    view/imageview.h \
+    view/colorreducepanel.h \
+    view/basicpanel.h \
+    controller/corecontroller.h \
+    model/colordetector.h \
+    model/colorreduce.h \
+    view/viewpanel.h \
+    view/viewpanelc3.h \
+    view/viewpanelc2r2.h
 
 INCLUDEPATH += C:\opencv\mingw\include\
                C:\opencv\mingw\include\opencv\

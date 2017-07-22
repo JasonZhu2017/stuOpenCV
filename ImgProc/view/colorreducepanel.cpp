@@ -7,7 +7,7 @@ ColorReducePanel::ColorReducePanel(QWidget *parent) : QWidget(parent)
 
 void ColorReducePanel::setupUi()
 {
-//    this->setMinimumWidth(180);sssssss
+//    this->setMinimumWidth(180);
 //    this->setMaximumWidth(180);
     testBtn = new QPushButton(tr("test"));
     mainLayout = new QVBoxLayout();
