@@ -19,11 +19,15 @@ public:
 
     QLabel * imgLabel;
 
+    cv::Mat *img;    //image to be showed
     void setupUi();
 
 
 public:
-    void showImg(cv::Mat mat);
+    void setImg(cv::Mat *mat);
+    cv::Mat* getImg();
+    void showImg();
+
 };
 
 #endif // IMAGEVIEW_H

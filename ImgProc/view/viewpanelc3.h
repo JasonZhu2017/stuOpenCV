@@ -4,8 +4,9 @@
 #include <QWidget>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QVBoxLayout>
-
+#include <QDebug>
 #include <view/imageview.h>
+#include <controller/corecontroller.h>
 
 class ViewPanelC3: public QWidget
 {
@@ -14,14 +15,18 @@ public:
     ~ViewPanelC3();
     int leftViewNum;
     int rightViewNum;
-    ImageView * * leftViewArray;
-    ImageView * * rightViewArray;
+    ImageView ** leftViewArray;
+    ImageView ** rightViewArray;
     ImageView * centralView;
     QHBoxLayout * mainLayout;
     QVBoxLayout * leftLayout;
     QVBoxLayout * rightLayout;
 
+    ImageView * focusView;
+
     void setupUi();
+
+    void showImg();
 };
 
 #endif // VIEWPANELC3_H

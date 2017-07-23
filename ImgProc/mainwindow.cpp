@@ -161,12 +161,13 @@ void MainWindow::slot_fileOpenAct(){
                                                     tr("Image Files(*.jpg *.png *.jpeg *.bmp)"));
    if (! fileName.isEmpty()) {
         bool succ = CoreController::getInstance()->loadImg(fileName.toLatin1().data());
-//        qDebug() << succ;
+        qDebug() << "load result:\t" << succ;
         if (succ){
 //            imgView1->showImg(CoreController::getInstance()->getImg());
 //            imgView2->showImg(CoreController::getInstance()->getImg());
 //            imgView3->showImg(CoreController::getInstance()->getImg());
 //            imgView4->showImg(CoreController::getInstance()->getImg());
+            showImg();
         }
    }
 }
@@ -195,13 +196,20 @@ void MainWindow::slot_procPanelSwitch()
 
 void MainWindow::showImg()
 {
-//    switch (viewLoopCounter)
-//    {
-//    case 0:
-//        imgView2->showImg(CoreController::getInstance()->getImg());
-//        imgView2->
-//        break;
-//    }
+    int viewIndex = viewPanelsStack->currentIndex();
+//    qDebug() << "view index: " << viewIndex;
+    switch (viewIndex)
+    {
+    case 0:
+//        pViewPanelC2R2->showImg();
+        break;
+    case 1:
+        pViewPanelC3->showImg();
+        break;
+    default:
+//        pViewPanelC2R2->showImg();
+        break;
+    }
 }
 
 void MainWindow::slot_flip()

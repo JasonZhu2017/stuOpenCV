@@ -84,7 +84,8 @@ DIST          =  mainwindow.h \
 		model\colorreduce.h \
 		view\viewpanel.h \
 		view\viewpanelc3.h \
-		view\viewpanelc2r2.h main.cpp \
+		view\viewpanelc2r2.h \
+		controller\ringbuffer.h main.cpp \
 		mainwindow.cpp \
 		view\imageview.cpp \
 		view\colorreducepanel.cpp \
@@ -340,13 +341,16 @@ release/moc_mainwindow.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore/QVariant
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QVBoxLayout \
+		view/basicpanel.h \
+		view/viewpanelc2r2.h \
+		view/viewpanelc3.h \
 		controller/corecontroller.h \
 		C:/opencv/mingw/include/opencv2/highgui/highgui.hpp \
 		C:/opencv/mingw/include/opencv2/highgui/highgui_c.h \
 		model/colordetector.h \
-		view/basicpanel.h \
+		controller/ringbuffer.h \
 		mainwindow.h
-	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IE:/work/projects/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -ID:/work/projects/github/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore mainwindow.h -o release\moc_mainwindow.cpp
 
 release/moc_colorreducepanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qwidget.h \
@@ -462,7 +466,7 @@ release/moc_colorreducepanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qgridlayout.h \
 		view/colorreducepanel.h
-	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IE:/work/projects/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore view\colorreducepanel.h -o release\moc_colorreducepanel.cpp
+	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -ID:/work/projects/github/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore view\colorreducepanel.h -o release\moc_colorreducepanel.cpp
 
 release/moc_basicpanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qwidget.h \
@@ -579,7 +583,7 @@ release/moc_basicpanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidg
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qboxlayout.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QVBoxLayout \
 		view/basicpanel.h
-	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IE:/work/projects/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore view\basicpanel.h -o release\moc_basicpanel.cpp
+	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -ID:/work/projects/github/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore view\basicpanel.h -o release\moc_basicpanel.cpp
 
 release/moc_viewpanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qwidget.h \
@@ -686,7 +690,7 @@ release/moc_viewpanel.cpp: C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QWidge
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
 		view/viewpanel.h
-	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -IE:/work/projects/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore view\viewpanel.h -o release\moc_viewpanel.cpp
+	C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/mkspecs/win32-g++ -ID:/work/projects/github/stuOpenCV/ImgProc -IC:/opencv/mingw/include -IC:/opencv/mingw/include/opencv -IC:/opencv/mingw/include/opencv2 -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtANGLE -IC:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore view\viewpanel.h -o release\moc_viewpanel.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -895,11 +899,14 @@ release/main.o: main.cpp mainwindow.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QVBoxLayout \
+		view/basicpanel.h \
+		view/viewpanelc2r2.h \
+		view/viewpanelc3.h \
 		controller/corecontroller.h \
 		C:/opencv/mingw/include/opencv2/highgui/highgui.hpp \
 		C:/opencv/mingw/include/opencv2/highgui/highgui_c.h \
 		model/colordetector.h \
-		view/basicpanel.h
+		controller/ringbuffer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
 release/mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -1093,11 +1100,14 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QVBoxLayout \
+		view/basicpanel.h \
+		view/viewpanelc2r2.h \
+		view/viewpanelc3.h \
 		controller/corecontroller.h \
 		C:/opencv/mingw/include/opencv2/highgui/highgui.hpp \
 		C:/opencv/mingw/include/opencv2/highgui/highgui_c.h \
 		model/colordetector.h \
-		view/basicpanel.h
+		controller/ringbuffer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o mainwindow.cpp
 
 release/imageview.o: view/imageview.cpp view/imageview.h \
@@ -1540,7 +1550,8 @@ release/corecontroller.o: controller/corecontroller.cpp controller/corecontrolle
 		C:/opencv/mingw/include/opencv2/core/core_c.h \
 		C:/opencv/mingw/include/opencv2/imgproc/imgproc.hpp \
 		C:/opencv/mingw/include/opencv2/imgproc/types_c.h \
-		model/colordetector.h
+		model/colordetector.h \
+		controller/ringbuffer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\corecontroller.o controller\corecontroller.cpp
 
 release/colordetector.o: model/colordetector.cpp model/colordetector.h \
@@ -1773,7 +1784,37 @@ release/viewpanelc3.o: view/viewpanelc3.cpp view/viewpanelc3.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore/qfile.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/qvector2d.h \
-		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/qtouchdevice.h
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qlayout.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QVBoxLayout \
+		view/imageview.h \
+		C:/opencv/mingw/include/opencv2/core/core.hpp \
+		C:/opencv/mingw/include/opencv2/core/types_c.h \
+		C:/opencv/mingw/include/opencv2/core/version.hpp \
+		C:/opencv/mingw/include/opencv2/core/operations.hpp \
+		C:/opencv/mingw/include/opencv2/core/mat.hpp \
+		C:/opencv/mingw/include/opencv2/imgproc/imgproc.hpp \
+		C:/opencv/mingw/include/opencv2/imgproc/types_c.h \
+		C:/opencv/mingw/include/opencv2/core/core_c.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QLabel \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qlabel.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QFrame \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/QScrollArea \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qscrollarea.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/QImage \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtGui/QPixmap \
+		C:/Qt/Qt5.6.2/5.6/mingw49_32/include/QtCore/QDebug \
+		controller/corecontroller.h \
+		C:/opencv/mingw/include/opencv2/highgui/highgui.hpp \
+		C:/opencv/mingw/include/opencv2/highgui/highgui_c.h \
+		model/colordetector.h \
+		controller/ringbuffer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\viewpanelc3.o view\viewpanelc3.cpp
 
 release/viewpanelc2r2.o: view/viewpanelc2r2.cpp view/viewpanelc2r2.h \

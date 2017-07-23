@@ -33,7 +33,8 @@ HEADERS  += mainwindow.h \
     model/colorreduce.h \
     view/viewpanel.h \
     view/viewpanelc3.h \
-    view/viewpanelc2r2.h
+    view/viewpanelc2r2.h \
+    controller/ringbuffer.h
 
 INCLUDEPATH += C:\opencv\mingw\include\
                C:\opencv\mingw\include\opencv\

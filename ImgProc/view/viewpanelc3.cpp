@@ -67,5 +67,31 @@ void ViewPanelC3::setupUi()
     mainLayout->setStretchFactor(centralView, 4);
     mainLayout->setStretchFactor(rightLayout, 1);
     this->setLayout(mainLayout);
+    focusView = centralView;
+}
+
+void ViewPanelC3::showImg()
+{
+    for (int i=0; i < leftViewNum; i++){
+        qDebug() << "left view Array: " << i;
+        cv::Mat * temp = CoreController::getInstance()->getPrevImg(i);
+        qDebug() << "ViewPannelC3 prev img:" << temp;
+        qDebug() << "ViewPannelC3 prev img channels: " << temp->channels();
+        leftViewArray[i]->setImg(temp);
+        qDebug() << "img points" << leftViewArray[i]->getImg();
+        leftViewArray[i]->showImg();
+    }
+    if (centralView == focusView){
+        cv::Mat * curImg = CoreController::getInstance()->getCurImg();
+        qDebug() << "curImg: " << curImg;
+        qDebug() << "curImg channels: " << curImg->channels();
+        centralView->setImg(curImg);
+    }else{
+        centralView->setImg(focusView->getImg());
+    }
+    centralView->showImg();
+    rightViewArray[0]->setImg(CoreController::getInstance()->getSrcImg());
+    rightViewArray[0]->showImg();
+
 }
 

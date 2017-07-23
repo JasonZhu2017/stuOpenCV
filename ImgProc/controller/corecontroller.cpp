@@ -2,26 +2,16 @@
 
 CoreController* CoreController::pSingleton = 0;
 CoreController::CoreController(int bufferSize):
-    bufferSize(bufferSize),
-    curIndex(-1),
-    prevValidNum(-1),
-    nextValidNum(0)
+    arraySize(bufferSize)
 {
-    if (bufferSize < 1)
-        bufferSize = 1;
-    imgsArray = new cv::Mat *[bufferSize];
-    for (int i=0; i<bufferSize; i++)
-        imgsArray[i] = 0;
+    imgsArray = new RingBuffer<cv::Mat*>(arraySize);
     pColorDetector =  new ColorDetector;
 }
 
 CoreController::~CoreController()
 {
     if (imgsArray != 0 ){
-        for (int i=0; i< bufferSize; i++)
-            if (imgsArray[i] != 0)
-                imgsArray[i] = 0;
-        delete [] imgsArray;
+        delete imgsArray;
         imgsArray = 0;
     }
     delete pColorDetector;
@@ -44,47 +34,61 @@ void CoreController::destroy()
     }
 }
 
-void CoreController::addImg2Array(cv::Mat img)
+void CoreController::resetBuffer()
 {
-    curIndex = (++curIndex) % bufferSize;
-    prevValidNum = ++prevValidNum < bufferSize-1 ? prevValidNum : bufferSize - 1;
-    nextValidNum = 0;
-    imgsArray[curIndex] = &img;
+    imgsArray->reset();
 }
 
-void CoreController::insertImg2Array(cv::Mat img, int index)
+void CoreController::addImg2Array(cv::Mat *img)
 {
-    imgsArray[index] = &img;
+    qDebug() << "add img: " << img;
+    qDebug() << "add img channel: " << img->channels();
+    imgsArray->add(img);
+    cv::Mat * temp;
+    if (imgsArray->getCursor(temp))
+    {
+        qDebug() << "get Cursor:" << temp;
+        qDebug() << "get Cursor channels:" << temp->channels();
+    }
+    cv::Mat * previmg;
+    if (imgsArray->getPrev(0, previmg))
+    {
+        qDebug() << "get prev:" << previmg;
+        qDebug() << "get preve channels:" << previmg->channels();
+    }
+
 }
 
-//cv::Mat CoreController::getImg()
-//{
-//    return image;
-//}
-
-void CoreController::setImgSrc(cv::Mat & imgIn)
+void CoreController::setSrcImg(cv::Mat *imgIn)
 {
-    imgSrc.create(imgIn.rows, imgIn.cols, imgIn.type());
-    imgSrc = imgIn.clone();
+    imgSrc.create(imgIn->rows, imgIn->cols, imgIn->type());
+    imgSrc = imgIn->clone();
 }
 
-cv::Mat CoreController::getImgSrc()
+cv::Mat* CoreController::getSrcImg()
 {
-    return imgSrc;
+    return &imgSrc;
 }
 
-cv::Mat CoreController::getCurImg()
+cv::Mat* CoreController::getCurImg()
 {
-    if (curIndex != -1)
-        return *imgsArray[curIndex];
+    cv::Mat * temp;
+    if (imgsArray->getCursor(temp))
+        return temp;
     else
-        return cv::Mat();
+        return NULL;
 }
 
-cv::Mat CoreController::getLastResult()
+cv::Mat* CoreController::getPrevImg(int steps)
 {
-    int lastIndex = (curIndex+nextValidNum)%bufferSize;
-    return * imgsArray[lastIndex];
+    cv::Mat * temp;
+    if (imgsArray->getPrev(steps, temp)){
+        qDebug() << "coreController get prev img:" << temp;
+        qDebug() << "coreController get prev img channels" << temp->channels();
+        return temp;
+    }
+    else
+        return NULL;
 }
 
 void CoreController::recoveryImg()
@@ -92,7 +96,7 @@ void CoreController::recoveryImg()
     cv::Mat newImg;
     newImg.create(imgSrc.rows, imgSrc.cols, imgSrc.type());
     newImg = imgSrc.clone();
-    addImg2Array(newImg);
+    addImg2Array(& newImg);
 }
 
 bool CoreController::loadImg(std::string filename)
@@ -101,18 +105,39 @@ bool CoreController::loadImg(std::string filename)
         return false;
     cv::Mat image = cv::imread(filename);
     if (image.data){
-        addImg2Array(image);
-        setImgSrc(image);
+        resetBuffer();
+        qDebug() << "load image" << &image;
+        qDebug() << "load image channels" << image.channels();
+        addImg2Array(&image);
+        setSrcImg(&image);
         return true;
-    }else{
+    }else
         return false;
-    }
 }
 
 void CoreController::flipImg()
 {
 //    if (image.data)
 //        cv::flip(image, result, 1);
+    cv::Mat* curImg;
+    curImg = getCurImg();
+    if (curImg){
+        if (curImg->data){
+            cv::Mat reslut;
+            cv::flip(*curImg, reslut, 1);
+            addImg2Array(&reslut);
+        }
+    }
+}
+
+void CoreController::undo()
+{
+    imgsArray->cursorRecede(1);
+}
+
+void CoreController::redo()
+{
+    imgsArray->cursorForward(1);
 }
 
 void CoreController::colorReduceProc()
