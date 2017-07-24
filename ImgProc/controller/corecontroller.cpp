@@ -4,7 +4,7 @@ CoreController* CoreController::pSingleton = 0;
 CoreController::CoreController(int bufferSize):
     arraySize(bufferSize)
 {
-    imgsArray = new RingBuffer<cv::Mat*>(arraySize);
+    imgsArray = new RingBuffer<cv::Mat>(arraySize);
     pColorDetector =  new ColorDetector;
 }
 
@@ -39,56 +39,36 @@ void CoreController::resetBuffer()
     imgsArray->reset();
 }
 
-void CoreController::addImg2Array(cv::Mat *img)
+void CoreController::addImg2Array(cv::Mat img)
 {
-    qDebug() << "add img: " << img;
-    qDebug() << "add img channel: " << img->channels();
     imgsArray->add(img);
-    cv::Mat * temp;
-    if (imgsArray->getCursor(temp))
-    {
-        qDebug() << "get Cursor:" << temp;
-        qDebug() << "get Cursor channels:" << temp->channels();
-    }
-    cv::Mat * previmg;
-    if (imgsArray->getPrev(0, previmg))
-    {
-        qDebug() << "get prev:" << previmg;
-        qDebug() << "get preve channels:" << previmg->channels();
-    }
-
 }
 
-void CoreController::setSrcImg(cv::Mat *imgIn)
+void CoreController::setSrcImg(cv::Mat imgIn)
 {
-    imgSrc.create(imgIn->rows, imgIn->cols, imgIn->type());
-    imgSrc = imgIn->clone();
+    imgSrc.create(imgIn.rows, imgIn.cols, imgIn.type());
+    imgSrc = imgIn.clone();
 }
 
-cv::Mat* CoreController::getSrcImg()
+cv::Mat CoreController::getSrcImg()
 {
-    return &imgSrc;
+    return imgSrc;
 }
 
-cv::Mat* CoreController::getCurImg()
+cv::Mat CoreController::getCurImg()
 {
-    cv::Mat * temp;
-    if (imgsArray->getCursor(temp))
-        return temp;
-    else
-        return NULL;
+    cv::Mat temp;
+    imgsArray->getCursor(temp);
+    return temp;
 }
 
-cv::Mat* CoreController::getPrevImg(int steps)
+cv::Mat CoreController::getPrevImg(int steps)
 {
-    cv::Mat * temp;
-    if (imgsArray->getPrev(steps, temp)){
-        qDebug() << "coreController get prev img:" << temp;
-        qDebug() << "coreController get prev img channels" << temp->channels();
-        return temp;
-    }
-    else
-        return NULL;
+    cv::Mat temp;
+    imgsArray->getPrev(steps, temp);
+//    qDebug() << "coreController get prev img type:" << temp.type();
+//    qDebug() << "coreController get prev img channels" << temp.channels();
+    return temp;
 }
 
 void CoreController::recoveryImg()
@@ -96,7 +76,7 @@ void CoreController::recoveryImg()
     cv::Mat newImg;
     newImg.create(imgSrc.rows, imgSrc.cols, imgSrc.type());
     newImg = imgSrc.clone();
-    addImg2Array(& newImg);
+    addImg2Array(newImg);
 }
 
 bool CoreController::loadImg(std::string filename)
@@ -106,10 +86,10 @@ bool CoreController::loadImg(std::string filename)
     cv::Mat image = cv::imread(filename);
     if (image.data){
         resetBuffer();
-        qDebug() << "load image" << &image;
-        qDebug() << "load image channels" << image.channels();
-        addImg2Array(&image);
-        setSrcImg(&image);
+//        qDebug() << "load image" << &image;
+//        qDebug() << "load image channels" << image.channels();
+        addImg2Array(image);
+        setSrcImg(image);
         return true;
     }else
         return false;
@@ -117,16 +97,12 @@ bool CoreController::loadImg(std::string filename)
 
 void CoreController::flipImg()
 {
-//    if (image.data)
-//        cv::flip(image, result, 1);
-    cv::Mat* curImg;
+    cv::Mat curImg;
     curImg = getCurImg();
-    if (curImg){
-        if (curImg->data){
-            cv::Mat reslut;
-            cv::flip(*curImg, reslut, 1);
-            addImg2Array(&reslut);
-        }
+    if (curImg.data){
+        cv::Mat reslut;
+        cv::flip(curImg, reslut, 1);
+        addImg2Array(reslut);
     }
 }
 

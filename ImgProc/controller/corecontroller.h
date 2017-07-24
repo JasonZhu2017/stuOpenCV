@@ -15,7 +15,7 @@ private:
     static CoreController * pSingleton;
     //data store
     int arraySize;
-    RingBuffer <cv::Mat*> * imgsArray;
+    RingBuffer <cv::Mat> * imgsArray;
     cv::Mat imgSrc;
     cv::Mat imgGray;
     cv::Mat imgChRed;
@@ -29,12 +29,12 @@ public:
     static void destroy();
 
     void resetBuffer();
-    void addImg2Array(cv::Mat *img);
-    cv::Mat* getCurImg();
-    cv::Mat* getPrevImg(int steps);
+    void addImg2Array(cv::Mat img);
+    cv::Mat getCurImg();
+    cv::Mat getPrevImg(int steps);
 
-    cv::Mat* getSrcImg();
-    void setSrcImg(cv::Mat *imgIn);
+    cv::Mat getSrcImg();
+    void setSrcImg(cv::Mat imgIn);
     void recoveryImg();
     bool loadImg(std::string filename);
     void flipImg();

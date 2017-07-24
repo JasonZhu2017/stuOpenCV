@@ -41,7 +41,7 @@ void ViewPanelC3::setupUi()
     leftViewArray = new ImageView* [leftViewNum];
     for (int i = 0; i < leftViewNum; i++)
     {
-        leftViewArray[i] = new ImageView(this);
+        leftViewArray[i] = new ImageView(this, ThumbnailView);
         leftLayout->addWidget(leftViewArray[i]);
     }
     //rightlayout
@@ -51,7 +51,7 @@ void ViewPanelC3::setupUi()
     //right views
     rightViewArray = new ImageView* [rightViewNum];
     for (int i=0; i<rightViewNum; i++){
-        rightViewArray[i] = new ImageView(this);
+        rightViewArray[i] = new ImageView(this, ThumbnailView);
         rightLayout->addWidget(rightViewArray[i]);
     }
     //central view
@@ -73,18 +73,12 @@ void ViewPanelC3::setupUi()
 void ViewPanelC3::showImg()
 {
     for (int i=0; i < leftViewNum; i++){
-        qDebug() << "left view Array: " << i;
-        cv::Mat * temp = CoreController::getInstance()->getPrevImg(i);
-        qDebug() << "ViewPannelC3 prev img:" << temp;
-        qDebug() << "ViewPannelC3 prev img channels: " << temp->channels();
+        cv::Mat  temp = CoreController::getInstance()->getPrevImg(i);
         leftViewArray[i]->setImg(temp);
-        qDebug() << "img points" << leftViewArray[i]->getImg();
         leftViewArray[i]->showImg();
     }
     if (centralView == focusView){
-        cv::Mat * curImg = CoreController::getInstance()->getCurImg();
-        qDebug() << "curImg: " << curImg;
-        qDebug() << "curImg channels: " << curImg->channels();
+        cv::Mat curImg = CoreController::getInstance()->getCurImg();
         centralView->setImg(curImg);
     }else{
         centralView->setImg(focusView->getImg());

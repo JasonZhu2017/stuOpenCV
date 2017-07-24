@@ -1,9 +1,6 @@
 #ifndef RINGBUFFER_H
 #define RINGBUFFER_H
 
-#include <QDebug>
-#include <opencv2/core.hpp>
-
 template <class T>
 class RingBuffer
 {
@@ -45,17 +42,17 @@ RingBuffer<T>::RingBuffer(int bufferSize)
     prevVldNum = -1;
     nextVldNum = 0;
     dataArray = new T[arraySize];
-    for (int i=0; i<arraySize; i++){
-        dataArray[i] = 0;
-    }
+//    for (int i=0; i<arraySize; i++){
+//        dataArray[i] = 0;
+//    }
 }
 
 template <class T>
 RingBuffer<T>::~RingBuffer()
 {
-    for (int i=0; i<arraySize; i++){
-        dataArray[i] = 0;
-    }
+//    for (int i=0; i<arraySize; i++){
+//        dataArray[i] = 0;
+//    }
     delete []dataArray;
 }
 
@@ -119,8 +116,9 @@ bool RingBuffer<T>::isFull()
 template <class T>
 void RingBuffer<T>::reset()
 {
-    for (int i=0; i<arraySize; i++)
-        dataArray[i] = 0;
+    delete []dataArray;
+    dataArray = 0;
+    dataArray = new T[arraySize];
     head = 0;
     tail = 0;
     cursor = -1;
@@ -170,7 +168,6 @@ bool RingBuffer<T>::getPrev(int prevSteps, T & rtValue)
         return false;
     }else{
         int index = (cursor + arraySize - prevSteps) % arraySize;
-        qDebug() << "prev index:" << index;
         rtValue = dataArray[index];
         return true;
     }

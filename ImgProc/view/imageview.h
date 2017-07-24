@@ -12,20 +12,25 @@
 #include <QPixmap>
 #include <QDebug>
 
+
+enum view_type{
+    ScrollView = 0,
+    ThumbnailView = 1
+};
 class ImageView : public QScrollArea
 {
 public:
-    explicit ImageView(QWidget *parent = 0);
-
+    explicit ImageView(QWidget *parent = 0, view_type vType=ScrollView);
+    view_type type;
     QLabel * imgLabel;
 
-    cv::Mat *img;    //image to be showed
+    cv::Mat img;    //image to be showed
     void setupUi();
 
 
 public:
-    void setImg(cv::Mat *mat);
-    cv::Mat* getImg();
+    void setImg(cv::Mat mat);
+    cv::Mat getImg();
     void showImg();
 
 };

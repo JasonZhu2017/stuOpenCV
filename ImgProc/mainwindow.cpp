@@ -161,12 +161,8 @@ void MainWindow::slot_fileOpenAct(){
                                                     tr("Image Files(*.jpg *.png *.jpeg *.bmp)"));
    if (! fileName.isEmpty()) {
         bool succ = CoreController::getInstance()->loadImg(fileName.toLatin1().data());
-        qDebug() << "load result:\t" << succ;
+//        qDebug() << "load result:\t" << succ;
         if (succ){
-//            imgView1->showImg(CoreController::getInstance()->getImg());
-//            imgView2->showImg(CoreController::getInstance()->getImg());
-//            imgView3->showImg(CoreController::getInstance()->getImg());
-//            imgView4->showImg(CoreController::getInstance()->getImg());
             showImg();
         }
    }
