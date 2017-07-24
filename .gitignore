@@ -3,3 +3,5 @@
 debug*
 release*
 *.pro.user*
+*.Debug
+*.Release
